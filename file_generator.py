@@ -54,7 +54,7 @@ class FileGenerator:
             availability = stream_obj.check_availability()
             if not availability:
                 file_obj = stream_obj.streams.filter(only_audio=True, file_extension='mp4').order_by('abr').first()
-                if file_obj.filesize < 20000000:
+                if file_obj.filesize < 50000000:
                     file_path = cls.get_or_create_file(file_obj)
                     downloaded_message_obj_id = cls.send_audio_file(
                         file_path=file_path, chat_id=chat_id, downloading_message_obj_id=downloading_message_obj_id
